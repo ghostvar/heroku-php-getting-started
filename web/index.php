@@ -5,5 +5,6 @@
 require('../vendor/autoload.php');
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-echo "<br config=\""."\">";
 $dotenv->load();
+
+echo "<br config=\""."\">";
