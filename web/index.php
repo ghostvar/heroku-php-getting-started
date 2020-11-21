@@ -4,7 +4,7 @@
 
 require('../vendor/autoload.php');
 
-$dotenv = new Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 echo "<br config=".$_ENV['DATABASE_URL'].">";
