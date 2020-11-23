@@ -57,7 +57,7 @@ $app->get('/db/', function() use($app) {
   }
 
   $form = '
-    <form action="post">
+    <form action="" action="post">
       <input type="text" name="name">
       <button name="submit" type="submit">Simpan</button>
     </form>
