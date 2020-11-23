@@ -44,7 +44,7 @@ $app->post('/db/', function() use($app) {
       $pesan = "alert('Data gagal tersimpan !');";
     }
   }
-  return "<script>{$pesan} window.location = \"\db\"</script>";
+  return "<script>{$pesan} window.location = \"\\db\";</script>";
 });
 
 $app->get('/db/', function() use($app) {
