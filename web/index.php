@@ -33,6 +33,19 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/db/', function() use($app) {
+  $pesan = "";
+
+  // buat nerima form
+  if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $res = $app['pdo']->prepare("INSERT INTO test_table (name) VALUES ('{$name}')");
+    if($res->execute()) {
+      $pesan = "<small>Data tersimpan !</small>";
+    } else {
+      $pesan = "<small>Data gagal tersimpan !</small>";
+    }
+  }
+
   $res = $app['pdo']->prepare('SELECT name FROM test_table');
   $res->execute();
 
@@ -41,7 +54,14 @@ $app->get('/db/', function() use($app) {
     $html .= "<li>{$row['name']}</li>";
   }
 
-  return `<ul>`.$html.`</ul>`;
+  $form = `
+    <form action="post">
+      <input type="text" name="name">
+      <button name="submit" type="submit">Simpan</button>
+    </form>
+  `;
+
+  return `<ul>`.$html.`</ul>`.$form.$pesan;
 });
 
 $app->run();
