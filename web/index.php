@@ -1,6 +1,7 @@
 <?php
 
 require('../vendor/autoload.php');
+session_start();
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -33,6 +34,7 @@ $app->get('/', function () use ($app) {
 });
 
 $app->post('/db/', function() use($app) {
+
   $pesan = "";
   // buat nerima form
   if(isset($_POST['submit'])) {
@@ -40,14 +42,17 @@ $app->post('/db/', function() use($app) {
     $res = $app['pdo']->prepare("INSERT INTO test_table (name) VALUES ('{$name}')");
     if($res->execute()) {
       $pesan = "alert('Data tersimpan !');";
+      $_SESSION['nama'] = $name;
     } else {
       $pesan = "alert('Data gagal tersimpan !');";
     }
   }
+
   return "<script>{$pesan} window.location = \"\\db\";</script>";
 });
 
 $app->get('/db/', function() use($app) {
+  session_start();
   $res = $app['pdo']->prepare('SELECT name FROM test_table');
   $res->execute();
 
@@ -63,7 +68,7 @@ $app->get('/db/', function() use($app) {
     </form>
   ';
 
-  return `<ul>`.$html.`</ul>`.$form;
+  return `<ul>`.$html.`</ul>`.$form . '<br>NAME: '.$_SESSION['nama'];
 });
 
 $app->run();
