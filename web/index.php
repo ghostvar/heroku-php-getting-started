@@ -38,7 +38,7 @@ $app->get('/db/', function() use($app) {
 
   $html = "";
   while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
-    $html .= "<li>{$row['nama']}</li>";
+    $html .= "<li>{$row['name']}</li>";
   }
 
   return `<ul>`.$html.`</ul>`;
