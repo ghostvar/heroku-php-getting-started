@@ -1,7 +1,6 @@
 <?php
 
 require('../vendor/autoload.php');
-session_start();
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -48,7 +47,7 @@ $app->post('/db/', function() use($app) {
     }
   }
 
-  return "<script>{$pesan} window.location = \"\\db\";</script>";
+  return "<script>{$pesan} window.location = \"/db\";</script>";
 });
 
 $app->get('/db/', function() use($app) {
