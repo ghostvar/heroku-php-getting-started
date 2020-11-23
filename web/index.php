@@ -54,12 +54,12 @@ $app->get('/db/', function() use($app) {
     $html .= "<li>{$row['name']}</li>";
   }
 
-  $form = `
+  $form = '
     <form action="post">
       <input type="text" name="name">
       <button name="submit" type="submit">Simpan</button>
     </form>
-  `;
+  ';
 
   return `<ul>`.$html.`</ul>`.$form.$pesan;
 });
