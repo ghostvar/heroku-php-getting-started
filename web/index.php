@@ -72,7 +72,7 @@ $app->get('/db/', function() use($app) {
     </form>
   ';
 
-  return `<ul>`.$html.`</ul>`.$form . '<br>NAME: '.$_SESSION['nama'];
+  return `<ul>`.$html.`</ul>`.$form . '<br>NAME: '.@$_SESSION['nama'];
 });
 
 $app->run();
