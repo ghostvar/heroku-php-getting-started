@@ -2,6 +2,11 @@
 
 require('../vendor/autoload.php');
 
+// memulai session
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
 $app = new Silex\Application();
 $app['debug'] = true;
 
