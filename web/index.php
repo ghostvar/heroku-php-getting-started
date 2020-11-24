@@ -47,7 +47,7 @@ $app->post('/db/', function() use($app) {
     }
   }
 
-  return "<script>{$pesan} window.locatio = \"/db\";</script>";
+  return "<script>{$pesan} window.location = \"/db\";</script>";
 });
 
 $app->get('/db/', function() use($app) {
