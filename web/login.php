@@ -7,5 +7,9 @@
 </head>
 <body>
   <h1>Halaman Login</h1>
+  <?php
+    $dbopts = parse_url(getenv('DATABASE_URL'));
+    echo $dbopts["user"];
+  ?>
 </body>
 </html>
