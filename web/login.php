@@ -10,6 +10,8 @@
   <?php
     $dbopts = parse_url(getenv('DATABASE_URL'));
     echo $dbopts["user"];
+    echo '<br/>';
+    echo 'function pg_connect exist ? ' . function_exists('pg_connect');
   ?>
 </body>
 </html>
