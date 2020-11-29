@@ -2,23 +2,33 @@
 
 require('../vendor/autoload.php');
 
-// memulai session
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
+use Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider;
+use Symfony\Component\HttpFoundation\Request;
+use Silex\Provider\ServiceControllerServiceProvider;
+use Silex\Provider\MonologServiceProvider;
+use Silex\Application;
 
-$app = new Silex\Application();
+use Acme\HelloControllerProvider;
+
+// // memulai session
+// if (session_status() == PHP_SESSION_NONE) {
+//   session_start();
+// }
+
+$app = new Application();
 $app['debug'] = true;
 
 // Register the monolog logging service
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
+$app->register(new MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
+
+$app->register(new ServiceControllerServiceProvider());
 
 // Register the csanquer/pdo for database service
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $app->register(
-  new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider('pdo'),
+  new PDOServiceProvider('pdo'),
   array(
     'pdo.server' => array(
       'driver'   => 'pgsql',
@@ -75,4 +85,8 @@ $app->get('/db/', function() use($app) {
   return `<ul>`.$html.`</ul>`.$form . '<br>NAME: '.@$_SESSION['nama'];
 });
 
+
+$app->mount('/blog', new HelloControllerProvider());
+
+Request::enableHttpMethodParameterOverride();
 $app->run();
