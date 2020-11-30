@@ -37,9 +37,10 @@ $app->register(
 
 // Our web handlers
 
-$app->get('/', function () use ($app) {
+$app->get('/a', function () use ($app) {
   return 'A'; //???
 });
 
+$app->mount('/', include 'handler/mainHandler.php');
 $app->mount('/blog', include 'handler/blogHandler.php');
 $app->mount('/db', include 'handler/dbHandler.php');
