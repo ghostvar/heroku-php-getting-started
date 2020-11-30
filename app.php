@@ -12,9 +12,9 @@ $app['debug'] = true;
 
 // Register session
 // $app->register(new SessionServiceProvider());
-$app->before(function ($request) {
-  $request->getSession()->start();
-});
+// $app->before(function ($request) {
+//   $request->getSession()->start();
+// });
 
 // Register the monolog logging service
 $app->register(new MonologServiceProvider(), array(
