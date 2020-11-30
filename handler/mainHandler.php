@@ -13,6 +13,6 @@ $main->get('/admin', function () use ($app) {
   return "admin";
 });
 
-$main->before('before');
+$main->before($before);
 
 return $main;
