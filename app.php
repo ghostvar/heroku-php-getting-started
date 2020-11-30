@@ -3,7 +3,6 @@ require('../vendor/autoload.php');
 
 use Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider;
 use Silex\Provider\MonologServiceProvider;
-use Silex\Provider\SessionServiceProvider;
 use Silex\Application;
 
 
@@ -11,10 +10,7 @@ $app = new Application();
 $app['debug'] = true;
 
 // Register session
-// $app->register(new SessionServiceProvider());
-// $app->before(function ($request) {
-//   $request->getSession()->start();
-// });
+$app->register(new Silex\Provider\SessionServiceProvider());
 
 // Register the monolog logging service
 $app->register(new MonologServiceProvider(), array(
