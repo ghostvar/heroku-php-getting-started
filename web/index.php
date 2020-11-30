@@ -8,8 +8,6 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\MonologServiceProvider;
 use Silex\Application;
 
-use Acme\HelloControllerProvider;
-
 // // memulai session
 // if (session_status() == PHP_SESSION_NONE) {
 //   session_start();
@@ -86,7 +84,7 @@ $app->get('/db/', function() use($app) {
 });
 
 
-$app->mount('/blog', new HelloControllerProvider());
+$app->mount('/blog', include 'blog.php');
 
 Request::enableHttpMethodParameterOverride();
 $app->run();
