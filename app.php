@@ -11,7 +11,7 @@ $app = new Application();
 $app['debug'] = true;
 
 // Register session
-$app->register(new SessionServiceProvider());
+// $app->register(new SessionServiceProvider());
 $app->before(function ($request) {
   $request->getSession()->start();
 });
