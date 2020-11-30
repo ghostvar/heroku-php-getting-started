@@ -11,8 +11,6 @@ $main->get('/login', function () use ($app) {
 
 $main->get('/admin', function () use ($app) {
   return "admin";
-});
-
-$main->before($before);
+})->before($app['auth']);
 
 return $main;
