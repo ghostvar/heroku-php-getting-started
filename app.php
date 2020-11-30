@@ -3,7 +3,6 @@ require('../vendor/autoload.php');
 
 use Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Request;
 use Silex\Provider\MonologServiceProvider;
 use Silex\Application;
 
@@ -37,7 +36,7 @@ $app->register(
 );
 
 // auth middleware
-$app['auth'] = function (Request $request) use ($app) {
+$app['auth'] = function () use ($app) {
   // redirect the user to the login screen if no access
   if (null === $user = $app['session']->get('user')) {
     return $app->redirect('/login');
