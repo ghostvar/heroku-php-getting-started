@@ -5,6 +5,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 $main = $app['controllers_factory'];
 
+
+$app->get('/', function () {
+  return 'Hello, Happy World!'; //???
+});
+
 $app->get('/login', function () use ($app) {
   return (
     "<h1>Halaman Login</h1>".
