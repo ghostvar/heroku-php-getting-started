@@ -36,7 +36,7 @@ $app->register(
 );
 
 // auth middleware
-$app['authx'] = function () use ($app) {
+$authMiddleware = function () use ($app) {
   // redirect the user to the login screen if no access
   if (null === $user = $app['session']->get('user')) {
     return $app->redirect('/login');
