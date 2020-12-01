@@ -3,8 +3,6 @@ require('../vendor/autoload.php');
 
 use Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Silex\Provider\MonologServiceProvider;
 use Silex\Application;
 
