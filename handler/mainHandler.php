@@ -9,7 +9,7 @@ $app->get('/login', function () use ($app) {
       "<input name=\"username\" type=\"text\" placeholder=\"Username\">".
       "<input name=\"password\" type=\"password\" placeholder=\"Password\">".
       "<button type=\"submit\" name=\"submit\">Login</button>".
-    "</form>".
+    "</form>"
   );
 });
 
